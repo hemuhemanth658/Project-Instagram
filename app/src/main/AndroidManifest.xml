@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.project_instagram.Fragment.PostActivity"></activity>
+        <activity android:name=".CommentsActivity"></activity>
+        <activity android:name=".Fragment.PostActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />

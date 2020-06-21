@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.project_instagram.Fragment.Adapter.UserAdapter;
+import com.example.project_instagram.Adapter.UserAdapter;
 import com.example.project_instagram.Fragment.Model.User;
 import com.example.project_instagram.R;
 import com.google.firebase.database.DataSnapshot;

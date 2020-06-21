@@ -1,4 +1,4 @@
-package com.example.project_instagram.Fragment.Adapter;
+package com.example.project_instagram.Adapter;
 
 
 import android.content.Context;
