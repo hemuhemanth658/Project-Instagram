@@ -124,6 +124,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ImageViewHolde
         reference.push().setValue(hashMap);
     }
 
+
     @Override
     public int getItemCount() {
         return mUsers.size();

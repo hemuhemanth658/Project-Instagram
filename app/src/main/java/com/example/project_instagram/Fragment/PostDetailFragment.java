@@ -37,8 +37,8 @@ public class PostDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_detail, container, false);
 
-        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", MODE_PRIVATE);
-        postid = prefs.getString("postid", "none");
+        SharedPreferences preferences = getContext().getSharedPreferences("PREFS", MODE_PRIVATE);
+        postid = preferences.getString("postid", "none");
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -57,7 +57,7 @@ public class PostDetailFragment extends Fragment {
     private void readPost() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts").child(postid);
 
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 postList.clear();

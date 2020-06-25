@@ -31,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -213,9 +212,10 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText fullname, username, bio;
 
     FirebaseUser firebaseUser;
-    StorageReference storageRef;
+
     private Uri mImageUri;
     private StorageTask uploadTask;
+    StorageReference storageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -316,9 +316,9 @@ public class EditProfileActivity extends AppCompatActivity {
                     + "." + getFileExtension(mImageUri));
 
             uploadTask = fileReference.putFile(mImageUri);
-            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            uploadTask.continueWithTask(new Continuation() {
                 @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                public Object then(@NonNull Task task) throws Exception {
                     if (!task.isSuccessful()) {
                         throw task.getException();
                     }
