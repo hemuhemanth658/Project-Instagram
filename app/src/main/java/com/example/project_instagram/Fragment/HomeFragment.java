@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .child("Following");
+                .child("following");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,3 +103,89 @@ public class HomeFragment extends Fragment {
         });
     }
 }
+
+//public class HomeFragment extends Fragment {
+//
+//    private RecyclerView recyclerView;
+//    private PostAdapter postAdapter;
+//    private List<Post> postList;
+//
+//
+//
+//    private List<String> followingList;
+//
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.fragment_home, container, false);
+//
+//        recyclerView = view.findViewById(R.id.recycler_view);
+//        recyclerView.setHasFixedSize(true);
+//        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+//        mLayoutManager.setReverseLayout(true);
+//        mLayoutManager.setStackFromEnd(true);
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        postList = new ArrayList<>();
+//        postAdapter = new PostAdapter(getContext(), postList);
+//        recyclerView.setAdapter(postAdapter);
+//
+//
+//        checkFollowing();
+//
+//        return view;
+//    }
+//
+//    private void checkFollowing() {
+//        followingList = new ArrayList<>();
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow")
+//                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                .child("following");
+//
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                followingList.clear();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    followingList.add(snapshot.getKey());
+//                }
+//
+//                readPosts();
+//                readStory();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+//
+//    private void readPosts() {
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+//
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                postList.clear();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    Post post = snapshot.getValue(Post.class);
+//                    for (String id : followingList) {
+//                        if (post.getPublisher().equals(id)) {
+//                            postList.add(post);
+//                        }
+//                    }
+//                }
+//
+//                postAdapter.notifyDataSetChanged();
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+//}
+

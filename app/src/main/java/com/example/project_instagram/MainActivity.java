@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.project_instagram.Fragment.HomeFragment;
 import com.example.project_instagram.Fragment.NotificationFragment;
-import com.example.project_instagram.Fragment.PostDetailFragment;
 import com.example.project_instagram.Fragment.ProfileFragment;
 import com.example.project_instagram.Fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_add:
                             selectedFragment = null;
-                            startActivity(new Intent(MainActivity.this, PostDetailFragment.class));
+                            startActivity(new Intent(MainActivity.this, PostActivity.class));
                             break;
                         case R.id.nav_heart:
                             selectedFragment = new NotificationFragment();

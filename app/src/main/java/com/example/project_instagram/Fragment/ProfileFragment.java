@@ -1,6 +1,7 @@
 package com.example.project_instagram.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.project_instagram.Adapter.MyFotosAdapter;
+import com.example.project_instagram.EditProfileActivity;
+import com.example.project_instagram.FollowersActivity;
 import com.example.project_instagram.Fragment.Model.Post;
 import com.example.project_instagram.Fragment.Model.User;
 import com.example.project_instagram.R;
@@ -100,20 +103,31 @@ public class ProfileFragment extends Fragment {
 
                 if (btn.equals("Edit Profile")) {
                     //go to EditProfile
+                    startActivity(new Intent(getContext(), EditProfileActivity.class));
                 } else if (btn.equals("follow")) {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("Following").child(profileid).setValue(true);
+                            .child("following").child(profileid).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
-                            .child("Followers").child(firebaseUser.getUid()).setValue(true);
+                            .child("followers").child(firebaseUser.getUid()).setValue(true);
 
                 } else if (btn.equals("following")) {
 
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("Following").child(profileid).removeValue();
+                            .child("following").child(profileid).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
-                            .child("Followers").child(firebaseUser.getUid()).removeValue();
+                            .child("followers").child(firebaseUser.getUid()).removeValue();
 
                 }
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileid);
+                intent.putExtra("title", "following");
+                startActivity(intent);
             }
         });
 

@@ -164,6 +164,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         });
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public ImageView image_profile, post_image, like, comment, save;
+        public TextView username, likes, publisher, description, comments;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            image_profile = itemView.findViewById(R.id.image_profile);
+            post_image = itemView.findViewById(R.id.post_image);
+            like = itemView.findViewById(R.id.like);
+            comment = itemView.findViewById(R.id.comment);
+            comments = itemView.findViewById(R.id.comments);
+            save = itemView.findViewById(R.id.save);
+            username = itemView.findViewById(R.id.username);
+            likes = itemView.findViewById(R.id.likes);
+            publisher = itemView.findViewById(R.id.publisher);
+            description = itemView.findViewById(R.id.description);
+        }
+    }
+
     private void publisherInfo(final ImageView image_profile, final TextView username, final TextView publisher, String userid) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
@@ -184,25 +205,5 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         });
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView image_profile, post_image, like, comment, save;
-        public TextView username, likes, publisher, description, comments;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            image_profile = itemView.findViewById(R.id.image_profile);
-            post_image = itemView.findViewById(R.id.post_image);
-            post_image = itemView.findViewById(R.id.post_image);
-            like = itemView.findViewById(R.id.like);
-            comment = itemView.findViewById(R.id.comment);
-            comments = itemView.findViewById(R.id.comments);
-            save = itemView.findViewById(R.id.save);
-            username = itemView.findViewById(R.id.username);
-            likes = itemView.findViewById(R.id.likes);
-            publisher = itemView.findViewById(R.id.publisher);
-            description = itemView.findViewById(R.id.description);
-        }
-    }
 }
